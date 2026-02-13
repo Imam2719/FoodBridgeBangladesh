@@ -1,7 +1,6 @@
-# Use Eclipse Temurin 17 as base image (modern, maintained Java distribution)
-FROM eclipse-temurin:17-jdk-slim
+# Multi-stage build: first stage builds the application
+FROM eclipse-temurin:17-jdk as builder
 
-# Set working directory
 WORKDIR /app
 
 # Install Maven
@@ -10,13 +9,13 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy Maven files first (for better caching)
+# Copy Maven files
 COPY pom.xml .
 COPY mvnw .
 COPY mvnw.cmd .
 COPY .mvn .mvn
 
-# Download dependencies (this layer will be cached if pom.xml doesn't change)
+# Download dependencies
 RUN mvn dependency:go-offline -B
 
 # Copy source code
@@ -25,11 +24,20 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
+# Second stage: lightweight runtime image
+FROM eclipse-temurin:17-jre-slim
+
+WORKDIR /app
+
+# Copy the built JAR from the builder stage
+COPY --from=builder /app/target/FoodBridgeBangladesh-0.0.1-SNAPSHOT.jar app.jar
+
 # Expose port
 EXPOSE 8080
 
-# Set environment variable for Spring profile
+# Environment variables
 ENV SPRING_PROFILES_ACTIVE=prod
+ENV PORT=8080
 
 # Run the application
-CMD ["java", "-Dspring.profiles.active=prod", "-Dserver.port=${PORT:-8080}", "-jar", "target/FoodBridgeBangladesh-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dspring.profiles.active=prod -Dserver.port=${PORT} -jar app.jar"]
