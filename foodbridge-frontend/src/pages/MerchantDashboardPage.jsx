@@ -11,7 +11,7 @@ const MerchantDashboard = () => {
 
   const BASE_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:8080'
-    : 'https://viewlive.onrender.com';
+    : 'https://foodbridgebangladesh-9ehu.onrender.com';
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [foodItems, setFoodItems] = useState([]);
