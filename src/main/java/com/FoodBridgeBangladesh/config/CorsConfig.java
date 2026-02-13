@@ -22,6 +22,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://localhost:3000");
         config.addAllowedOrigin("http://localhost:3001");  // ADD THIS
         config.addAllowedOrigin("https://foodbridge-frontend.onrender.com");
+           config.addAllowedOrigin("https://foodbridgebangladesh-k0sb.onrender.com");
 
         // Your existing headers (keep as is)
         config.addAllowedHeader("*");
