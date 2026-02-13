@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/api/admin/merchants")
 @CrossOrigin(
-        origins = {"http://localhost:3000", "https://foodbridge-frontend.onrender.com"},
+        origins = {"http://localhost:3000", "https://foodbridge-frontend.onrender.com","https://foodbridgebangladesh-k0sb.onrender.com"},
         allowCredentials = "true"
 )
 public class MerchantController {

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/merchant/messages")
 @CrossOrigin(
-        origins = {"http://localhost:3000", "https://foodbridge-frontend.onrender.com"},
+        origins = {"http://localhost:3000","https://foodbridgebangladesh-k0sb.onrender.com", "https://foodbridge-frontend.onrender.com"},
         allowCredentials = "true"
 )
 public class MerchantMessageController {

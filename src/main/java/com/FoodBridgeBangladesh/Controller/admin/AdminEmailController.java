@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/api/admin/email")
 @CrossOrigin(
-        origins = {"http://localhost:3000", "https://foodbridge-frontend.onrender.com"},
+        origins = {"https://foodbridgebangladesh-k0sb.onrender.com", "http://localhost:3000", "https://foodbridge-frontend.onrender.com"},
         allowCredentials = "true"
 )
 public class AdminEmailController {
