@@ -1,5 +1,5 @@
 # Multi-stage build: first stage builds the application
-FROM eclipse-temurin:17-jdk as builder
+FROM eclipse-temurin:17-jdk AS builder
 
 WORKDIR /app
 
@@ -25,7 +25,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Second stage: lightweight runtime image
-FROM eclipse-temurin:17-jre-slim
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
