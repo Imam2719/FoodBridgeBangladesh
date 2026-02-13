@@ -6,7 +6,7 @@ A comprehensive digital platform that bridges the gap between food waste and hun
 
 ## 🌐 Live Application
 
-**Deployed URL:** https://foodbridge-frontend.onrender.com/
+**Deployed URL:** https://foodbridgebangladesh-k0sb.onrender.com
 
 ## 🔐 Test Accounts
 
